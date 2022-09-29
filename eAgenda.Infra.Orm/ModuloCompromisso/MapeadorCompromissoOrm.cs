@@ -20,7 +20,7 @@ namespace eAgenda.Infra.Orm.ModuloCompromisso
 
             builder.HasOne(x => x.Usuario)
                 .WithMany()
-                .IsRequired(false)
+                .IsRequired()
                 .HasForeignKey(x => x.UsuarioId)
                 .OnDelete(DeleteBehavior.NoAction);
 

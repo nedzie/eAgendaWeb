@@ -8,10 +8,10 @@ namespace eAgenda.WebAPI.Config.AutoMapperConfig.ModuloCompromisso
     {
         public CompromissoProfile()
         {
-            CreateMap<Compromisso, ListarCompromissoViewModel>();
-            CreateMap<Compromisso, VisualizarCompromissoViewModel>();
             CreateMap<InserirCompromissoViewModel, Compromisso>();
             CreateMap<EditarCompromissoViewModel, Compromisso>();
+            CreateMap<Compromisso, ListarCompromissoViewModel>();
+            CreateMap<Compromisso, VisualizarCompromissoViewModel>();
         }
     }
 }

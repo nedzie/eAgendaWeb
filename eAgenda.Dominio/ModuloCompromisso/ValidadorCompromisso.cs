@@ -13,7 +13,7 @@ namespace eAgenda.Dominio.ModuloCompromisso
             When(x => x.TipoLocal == TipoLocalizacaoCompromissoEnum.Remoto, () =>
             {
                 RuleFor(x => x.Link)
-                    .Url()
+                    //.Url()
                    .NotNull()
                    .NotEmpty();
 

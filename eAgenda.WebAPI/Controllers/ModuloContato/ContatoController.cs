@@ -4,6 +4,7 @@ using eAgenda.Dominio.ModuloContato;
 using eAgenda.Dominio.ModuloTarefa;
 using eAgenda.WebAPI.ViewModels.ModuloContato;
 using eAgenda.WebAPI.ViewModels.ModuloTarefa;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace eAgenda.WebAPI.Controllers.ModuloContato
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ContatoController : eAgendaControllerBase
     {
         private readonly ServicoContato servicoContato;
@@ -26,7 +28,11 @@ namespace eAgenda.WebAPI.Controllers.ModuloContato
         [HttpPost]
         public ActionResult<FormsContatoViewModel> Inserir(InserirContatoViewModel contatoVM)
         {
-            var contatoResult = servicoContato.Inserir(mapeadorContato.Map<Contato>(contatoVM));
+            var contato = mapeadorContato.Map<Contato>(contatoVM);
+
+            contato.UsuarioId = UsuarioLogado.Id;
+
+            var contatoResult = servicoContato.Inserir(contato);
 
             if (contatoResult.IsFailed)
                 return InternalError(contatoResult);
@@ -77,7 +83,7 @@ namespace eAgenda.WebAPI.Controllers.ModuloContato
         [HttpGet]
         public ActionResult<List<ListarTarefaViewModel>> SelecionarTodos()
         {
-            var contatoResult = servicoContato.SelecionarTodos();
+            var contatoResult = servicoContato.SelecionarTodos(UsuarioLogado.Id);
 
             if (contatoResult.IsFailed)
                 return InternalError(contatoResult);

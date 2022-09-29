@@ -38,9 +38,11 @@ namespace eAgenda.Infra.Orm.ModuloContato
             return contatos.SingleOrDefault(x => x.Id == id);
         }
 
-        public List<Contato> SelecionarTodos(bool incluirMateriasEhQuestoes)
+        public List<Contato> SelecionarTodos(Guid usuarioId = new Guid())
         {
-            return contatos.ToList();
+            return contatos
+                .Where(x => x.UsuarioId.Equals(usuarioId))
+                .ToList();
         }
 
         public List<Contato> SelecionarTodos()

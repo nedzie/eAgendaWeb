@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using System;
 
@@ -10,6 +11,12 @@ namespace eAgenda.WebAPI.Config
         {
             services.AddSwaggerGen(c =>
             {
+                c.MapType(typeof(TimeSpan), () => new OpenApiSchema
+                {
+                    Type = "string",
+                    Example = new OpenApiString("00:00:00")
+                });
+
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "eAgenda.WebAPI", Version = "v1" });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme

@@ -10,7 +10,7 @@ using System.Text;
 using System;
 using System.Threading.Tasks;
 
-namespace eAgenda.WebAPI.Controllers
+namespace eAgenda.WebAPI.Controllers.ModuloAutenticacao
 {
     [Route("api/conta")]
     [ApiController]

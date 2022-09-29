@@ -43,6 +43,13 @@ namespace eAgenda.Infra.Orm.ModuloCompromisso
             return compromissos.ToList();
         }
 
+        public List<Compromisso> SelecionarTodos(Guid usuarioId = new Guid())
+        {
+            return compromissos
+                .Where(x => x.UsuarioId.Equals(usuarioId))
+                .ToList();
+        }
+
         public List<Compromisso> SelecionarCompromissosFuturos(DateTime dataInicial, DateTime dataFinal)
         {
             throw new NotImplementedException();

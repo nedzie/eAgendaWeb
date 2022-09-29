@@ -6,7 +6,6 @@ namespace eAgenda.WebAPI.ViewModels.ModuloCompromisso
 {
     public class FormsCompromissoViewModel
     {
-        public Guid Id { get; set; }
         [Required(ErrorMessage = "O campo '{0}' é obrigatório")]
         public string Assunto { get; set; }
 
@@ -16,7 +15,7 @@ namespace eAgenda.WebAPI.ViewModels.ModuloCompromisso
 
         public DateTime Data { get; set; }
         public TimeSpan HoraInicio { get; set; }
-        public TimeSpan HoraFim { get; set; }
+        public TimeSpan HoraTermino { get; set; }
         public Contato Contato { get; set; }
         public Guid ContatoId { get; set; }
     }

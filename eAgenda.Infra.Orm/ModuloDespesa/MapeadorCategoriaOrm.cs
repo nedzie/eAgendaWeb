@@ -14,7 +14,7 @@ namespace eAgenda.Infra.Orm.ModuloDespesa
 
             builder.HasOne(x => x.Usuario)
                 .WithMany()
-                .IsRequired(false)
+                .IsRequired()
                 .HasForeignKey(x => x.UsuarioId)
                 .OnDelete(DeleteBehavior.NoAction);
 

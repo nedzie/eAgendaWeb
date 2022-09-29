@@ -28,8 +28,13 @@ namespace eAgenda.WebAPI.Controllers.ModuloCompromisso
         [HttpPost]
         public ActionResult<FormsCompromissoViewModel> Inserir(InserirCompromissoViewModel compromissoVM)
         {
-            compromissoVM.Contato = servicoContato.SelecionarPorId(compromissoVM.ContatoId).Value;
-            var compromissoResult = servicoCompromisso.Inserir(mapeadorCompromisso.Map<Compromisso>(compromissoVM));
+            var compromisso = mapeadorCompromisso.Map<Compromisso>(compromissoVM);
+
+            compromisso.Contato = servicoContato.SelecionarPorId(compromissoVM.ContatoId).Value;
+
+            compromisso.UsuarioId = UsuarioLogado.Id;
+
+            var compromissoResult = servicoCompromisso.Inserir(compromisso);
 
             if (compromissoResult.IsFailed)
                 return InternalError(compromissoResult);
@@ -80,7 +85,7 @@ namespace eAgenda.WebAPI.Controllers.ModuloCompromisso
         [HttpGet]
         public ActionResult<List<ListarCompromissoViewModel>> SelecionarTodos()
         {
-            var compromissoResult = servicoCompromisso.SelecionarTodos();
+            var compromissoResult = servicoCompromisso.SelecionarTodos(UsuarioLogado.Id);
 
             if (compromissoResult.IsFailed)
                 return InternalError(compromissoResult);

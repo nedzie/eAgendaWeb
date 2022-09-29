@@ -6,8 +6,8 @@ namespace eAgenda.Dominio.ModuloCompromisso
 {
     public interface IRepositorioCompromisso : IRepositorio<Compromisso>
     {
+        List<Compromisso> SelecionarTodos(Guid guid);
         List<Compromisso> SelecionarCompromissosFuturos(DateTime dataInicial, DateTime dataFinal);
-
         List<Compromisso> SelecionarCompromissosPassados(DateTime dataDeHoje);
     }
 }
