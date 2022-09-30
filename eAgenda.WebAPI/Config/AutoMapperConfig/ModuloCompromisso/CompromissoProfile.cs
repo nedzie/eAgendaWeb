@@ -10,7 +10,8 @@ namespace eAgenda.WebAPI.Config.AutoMapperConfig.ModuloCompromisso
         public CompromissoProfile()
         {
             CreateMap<InserirCompromissoViewModel, Compromisso>()
-                .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>());
+                .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>())
+                .AfterMap<ConfigurarContatoMappingAction>();
 
             CreateMap<EditarCompromissoViewModel, Compromisso>();
             CreateMap<Compromisso, ListarCompromissoViewModel>();

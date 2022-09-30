@@ -89,8 +89,8 @@ namespace eAgenda.WebAPI.Controllers.ModuloCategoria
             });
         }
 
-        [HttpGet("visualizar-completo/{id:guid}")]
-        public ActionResult<VisualizarCategoriaViewModel> SelecionarTarefaCompletaPorId(Guid id)
+        [HttpGet("visualizacao-completa/{id:guid}")]
+        public ActionResult<VisualizarCategoriaViewModel> SelecionarCategoriaCompletaPorId(Guid id)
         {
             var categoriaResult = servicoCategoria.SelecionarPorId(id);
 
@@ -104,6 +104,24 @@ namespace eAgenda.WebAPI.Controllers.ModuloCategoria
             {
                 sucesso = true,
                 dados = mapeadorCategoria.Map<VisualizarCategoriaViewModel>(categoriaResult.Value)
+            });
+        }
+
+        [HttpGet("{id:guid}")]
+        public ActionResult<FormsCategoriaViewModel> SelecionarCompromissoPorId(Guid id)
+        {
+            var categoriaResult = servicoCategoria.SelecionarPorId(id);
+
+            if (categoriaResult.IsFailed && RegistroNaoEncontrado(categoriaResult))
+                return NotFound(categoriaResult);
+
+            if (categoriaResult.IsFailed)
+                return InternalError(categoriaResult);
+
+            return Ok(new
+            {
+                sucesso = true,
+                dados = mapeadorCategoria.Map<FormsCategoriaViewModel>(categoriaResult.Value)
             });
         }
     }

@@ -52,12 +52,19 @@ namespace eAgenda.Infra.Orm.ModuloCompromisso
 
         public List<Compromisso> SelecionarCompromissosFuturos(DateTime dataInicial, DateTime dataFinal)
         {
-            throw new NotImplementedException();
+            return compromissos
+                .Include(x => x.Contato)
+                .Where(x => x.Data >= dataInicial)
+                .Where(x => x.Data <= dataFinal)
+                .ToList();
         }
 
         public List<Compromisso> SelecionarCompromissosPassados(DateTime dataDeHoje)
         {
-            throw new NotImplementedException();
+            return compromissos
+                .Include(x => x.Contato)
+                .Where(x => x.Data < dataDeHoje)
+                .ToList();
         }
     }
 }

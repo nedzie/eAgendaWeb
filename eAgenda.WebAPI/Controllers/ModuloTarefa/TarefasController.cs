@@ -93,7 +93,7 @@ namespace eAgenda.WebAPI.Controllers.ModuloTarefa
             });
         }
 
-        [HttpGet("visualizar-completa/{id:guid}")] // /api/Tarefas/ID
+        [HttpGet("visualizacao-completa/{id:guid}")] // /api/Tarefas/ID
         public ActionResult<VisualizarTarefaViewModel> SelecionarTarefaCompletaPorId(Guid id)
         {
             var tarefaResult = servicoTarefa.SelecionarPorId(id);
@@ -111,6 +111,22 @@ namespace eAgenda.WebAPI.Controllers.ModuloTarefa
             });
         }
 
-       
+        [HttpGet("{id:guid}")]
+        public ActionResult<FormsTarefaViewModel> SelecionarTarefaPorId(Guid id)
+        {
+            var tarefaResult = servicoTarefa.SelecionarPorId(id);
+
+            if (tarefaResult.IsFailed && RegistroNaoEncontrado(tarefaResult))
+                return NotFound(tarefaResult);
+
+            if (tarefaResult.IsFailed)
+                return InternalError(tarefaResult);
+
+            return Ok(new
+            {
+                sucesso = true,
+                dados = mapeadorTarefas.Map<FormsTarefaViewModel>(tarefaResult.Value)
+            });
+        }
     }
 }

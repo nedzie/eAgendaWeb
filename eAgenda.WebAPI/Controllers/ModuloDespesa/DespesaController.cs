@@ -91,8 +91,8 @@ namespace eAgenda.WebAPI.Controllers.ModuloDespesa
             });
         }
 
-        [HttpGet("visualizar-completo/{id:guid}")]
-        public ActionResult<VisualizarDespesaViewModel> SelecionarTarefaCompletaPorId(Guid id)
+        [HttpGet("visualizacao-completa/{id:guid}")]
+        public ActionResult<VisualizarDespesaViewModel> SelecionarDespesaCompletaPorId(Guid id)
         {
             var despesaResult = servicoDespesa.SelecionarPorId(id);
 
@@ -106,6 +106,24 @@ namespace eAgenda.WebAPI.Controllers.ModuloDespesa
             {
                 sucesso = true,
                 dados = mapeadorDespesa.Map<VisualizarDespesaViewModel>(despesaResult.Value)
+            });
+        }
+
+        [HttpGet("{id:guid}")]
+        public ActionResult<FormsDespesaViewModel> SelecionarDespesaPorId(Guid id)
+        {
+            var despesaResult = servicoDespesa.SelecionarPorId(id);
+
+            if (despesaResult.IsFailed && RegistroNaoEncontrado(despesaResult))
+                return NotFound(despesaResult);
+
+            if (despesaResult.IsFailed)
+                return InternalError(despesaResult);
+
+            return Ok(new
+            {
+                sucesso = true,
+                dados = mapeadorDespesa.Map<FormsDespesaViewModel>(despesaResult.Value)
             });
         }
     }

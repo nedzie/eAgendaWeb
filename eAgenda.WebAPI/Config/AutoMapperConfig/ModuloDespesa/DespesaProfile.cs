@@ -11,11 +11,9 @@ namespace eAgenda.WebAPI.Config.AutoMapperConfig.ModuloDespesa
     {
         public DespesaProfile()
         {
-            CreateMap<InserirDespesaViewModel, Despesa>()
-                .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>());
-
-            CreateMap<EditarDespesaViewModel, Despesa>();
-
+            CreateMap<FormsDespesaViewModel, Despesa>()
+                .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>())
+                .AfterMap<ConfigurarCategoriasMappingAction>();
 
 
             CreateMap<Despesa, ListarDespesaViewModel>()

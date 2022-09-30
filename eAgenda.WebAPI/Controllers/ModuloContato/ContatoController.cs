@@ -92,8 +92,8 @@ namespace eAgenda.WebAPI.Controllers.ModuloContato
             });
         }
 
-        [HttpGet("visualizar-completo/{id:guid}")]
-        public ActionResult<VisualizarTarefaViewModel> SelecionarTarefaCompletaPorId(Guid id)
+        [HttpGet("visualizacao-completa/{id:guid}")]
+        public ActionResult<VisualizarTarefaViewModel> SelecionarContatoCompletoPorId(Guid id)
         {
             var contatoResult = servicoContato.SelecionarPorId(id);
 
@@ -107,6 +107,24 @@ namespace eAgenda.WebAPI.Controllers.ModuloContato
             {
                 sucesso = true,
                 dados = mapeadorContato.Map<VisualizarContatoViewModel>(contatoResult.Value)
+            });
+        }
+
+        [HttpGet("{id:guid}")]
+        public ActionResult<FormsContatoViewModel> SelecionarContatoPorId(Guid id)
+        {
+            var contatoResult = servicoContato.SelecionarPorId(id);
+
+            if (contatoResult.IsFailed && RegistroNaoEncontrado(contatoResult))
+                return NotFound(contatoResult);
+
+            if (contatoResult.IsFailed)
+                return InternalError(contatoResult);
+
+            return Ok(new
+            {
+                sucesso = true,
+                dados = mapeadorContato.Map<FormsContatoViewModel>(contatoResult.Value)
             });
         }
     }

@@ -168,14 +168,14 @@ namespace eAgenda.Aplicacao.ModuloCompromisso
             }
         }
 
-        public Result<List<Compromisso>> SelecionarCompromissosPassados(DateTime now)
+        public Result<List<Compromisso>> SelecionarCompromissosPassados(DateTime hoje)
         {
-            return SelecionarTodos();
+            return repositorioCompromisso.SelecionarCompromissosPassados(hoje);
         }
 
         public Result<List<Compromisso>> SelecionarCompromissosFuturos(DateTime dataInicial, DateTime dataFinal)
         {
-            return SelecionarTodos();
+            return repositorioCompromisso.SelecionarCompromissosFuturos(dataInicial, dataFinal);
         }
     }
 }
