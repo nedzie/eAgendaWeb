@@ -26,8 +26,6 @@ namespace eAgenda.WebAPI.Controllers.ModuloCategoria
         {
             var categoria = mapeadorCategoria.Map<Categoria>(categoriaVM);
 
-            categoria.UsuarioId = UsuarioLogado.Id;
-
             var categoriaResult = servicoCategoria.Inserir(categoria);
 
             if (categoriaResult.IsFailed)

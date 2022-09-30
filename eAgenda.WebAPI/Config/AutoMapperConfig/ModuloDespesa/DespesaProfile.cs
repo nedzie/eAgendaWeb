@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using eAgenda.Dominio.Compartilhado;
 using eAgenda.Dominio.ModuloDespesa;
+using eAgenda.WebAPI.Config.AutoMapperConfig.ModuloAutenticacao;
 using eAgenda.WebAPI.ViewModels.ModuloDespesa;
 using System.Linq;
 
@@ -10,8 +11,12 @@ namespace eAgenda.WebAPI.Config.AutoMapperConfig.ModuloDespesa
     {
         public DespesaProfile()
         {
-            CreateMap<InserirDespesaViewModel, Despesa>();
+            CreateMap<InserirDespesaViewModel, Despesa>()
+                .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>());
+
             CreateMap<EditarDespesaViewModel, Despesa>();
+
+
 
             CreateMap<Despesa, ListarDespesaViewModel>()
                 .ForMember(destino => destino.FormaPagamento, opt => opt.MapFrom(origem => origem.FormaPagamento.GetDescription()));

@@ -29,8 +29,6 @@ namespace eAgenda.WebAPI.Controllers.ModuloContato
         {
             var contato = mapeadorContato.Map<Contato>(contatoVM);
 
-            contato.UsuarioId = UsuarioLogado.Id;
-
             var contatoResult = servicoContato.Inserir(contato);
 
             if (contatoResult.IsFailed)

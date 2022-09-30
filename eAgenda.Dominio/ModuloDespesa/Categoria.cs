@@ -15,8 +15,6 @@ namespace eAgenda.Dominio.ModuloDespesa
         public string Titulo { get; set; }
 
         public List<Despesa> Despesas { get; set; }
-        public Guid UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
 
         public override void Atualizar(Categoria registro)
         {

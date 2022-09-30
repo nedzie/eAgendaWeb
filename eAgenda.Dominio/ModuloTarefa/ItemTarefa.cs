@@ -28,7 +28,7 @@ namespace eAgenda.Dominio.ModuloTarefa
         public string Titulo { get; set; }
 
         public bool Concluido { get; set; }
-        [JsonIgnore]//Gambiarra
+        [JsonIgnore]
         public Tarefa Tarefa { get; set; }
 
         public Guid TarefaId { get; set; }

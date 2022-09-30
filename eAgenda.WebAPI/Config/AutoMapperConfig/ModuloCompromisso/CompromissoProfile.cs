@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eAgenda.Dominio.ModuloCompromisso;
+using eAgenda.WebAPI.Config.AutoMapperConfig.ModuloAutenticacao;
 using eAgenda.WebAPI.ViewModels.ModuloCompromisso;
 
 namespace eAgenda.WebAPI.Config.AutoMapperConfig.ModuloCompromisso
@@ -8,7 +9,9 @@ namespace eAgenda.WebAPI.Config.AutoMapperConfig.ModuloCompromisso
     {
         public CompromissoProfile()
         {
-            CreateMap<InserirCompromissoViewModel, Compromisso>();
+            CreateMap<InserirCompromissoViewModel, Compromisso>()
+                .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>());
+
             CreateMap<EditarCompromissoViewModel, Compromisso>();
             CreateMap<Compromisso, ListarCompromissoViewModel>();
             CreateMap<Compromisso, VisualizarCompromissoViewModel>();

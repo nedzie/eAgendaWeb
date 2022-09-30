@@ -1,5 +1,4 @@
 ﻿using eAgenda.Dominio.Compartilhado;
-using eAgenda.Dominio.ModuloAutenticacao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +30,6 @@ namespace eAgenda.Dominio.ModuloTarefa
         public DateTime? DataConclusao { get; set; }
         public List<ItemTarefa> Itens { get { return itens; } }
         public decimal PercentualConcluido { get; set; }
-        public Guid UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
 
         public void CalcularPercentualConcluido()
         {

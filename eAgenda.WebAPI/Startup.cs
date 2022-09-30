@@ -25,6 +25,8 @@ namespace eAgenda.WebAPI
                 config.SuppressModelStateInvalidFilter = true; // Cancele a validação nos modelos
             });
 
+            services.AddHttpContextAccessor(); // UsuarioResolver recebe uma instância do HTTPContext { usuario, claims... }
+
             services.AddAutoMapper(typeof(Startup));
 
             services.ConfigurarInjecaoDependencia();

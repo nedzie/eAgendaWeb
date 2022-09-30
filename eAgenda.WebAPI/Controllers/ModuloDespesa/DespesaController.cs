@@ -28,8 +28,6 @@ namespace eAgenda.WebAPI.Controllers.ModuloDespesa
         {
             var despesa = mapeadorDespesa.Map<Despesa>(despesaVM);
 
-            despesa.UsuarioId = UsuarioLogado.Id;
-
             var despesaResult = servicoDespesa.Inserir(despesa);
 
             if (despesaResult.IsFailed)

@@ -30,8 +30,6 @@ namespace eAgenda.WebAPI.Controllers.ModuloCompromisso
 
             compromisso.Contato = servicoContato.SelecionarPorId(compromissoVM.ContatoId).Value;
 
-            compromisso.UsuarioId = UsuarioLogado.Id;
-
             var compromissoResult = servicoCompromisso.Inserir(compromisso);
 
             if (compromissoResult.IsFailed)

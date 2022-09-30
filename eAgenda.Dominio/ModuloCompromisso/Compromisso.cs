@@ -31,8 +31,6 @@ namespace eAgenda.Dominio.ModuloCompromisso
 
         public string Assunto { get; set; }
         public string Local { get; set; }
-        public Guid UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
 
         public TipoLocalizacaoCompromissoEnum TipoLocal
         {

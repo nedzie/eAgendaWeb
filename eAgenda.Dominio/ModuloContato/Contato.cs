@@ -24,8 +24,6 @@ namespace eAgenda.Dominio.ModuloContato
         public string Telefone { get; set; }
         public string Empresa { get; set; }
         public string Cargo { get; set; }
-        public Guid UsuarioId { get; set; }
-        public Usuario Usuario { get; set; }
 
         public override void Atualizar(Contato registro)
         {

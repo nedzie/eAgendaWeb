@@ -28,8 +28,6 @@ namespace eAgenda.WebAPI.Controllers.ModuloTarefa
         {
             var tarefa = mapeadorTarefas.Map<Tarefa>(tarefaVM);
 
-            tarefa.UsuarioId = UsuarioLogado.Id;
-
             var tarefaResult = servicoTarefa.Inserir(tarefa);
 
             if (tarefaResult.IsFailed)
@@ -53,8 +51,6 @@ namespace eAgenda.WebAPI.Controllers.ModuloTarefa
             // tarefaSelecionada será atualizada com as informações de tarefaVM
             // E essas alterações irão para 'tarefa'
             var tarefa = mapeadorTarefas.Map(tarefaVM, tarefaResult.Value);
-
-            tarefa.UsuarioId = UsuarioLogado.Id;
 
             tarefaResult = servicoTarefa.Editar(tarefa);
 
