@@ -91,6 +91,16 @@ namespace eAgenda.Aplicacao.ModuloDespesa
             return Result.Ok(despesa);
         }
 
+        public Result Excluir(Guid id)
+        {
+            var despesaResult = SelecionarPorId(id);
+
+            if (despesaResult.IsSuccess)
+                return Excluir(despesaResult.Value);
+
+            return Result.Fail(despesaResult.Errors);
+        }
+
         public Result Excluir(Despesa despesa)
         {
             Log.Logger.Debug("Tentando excluir despesa... {@d}", despesa);
@@ -117,13 +127,13 @@ namespace eAgenda.Aplicacao.ModuloDespesa
             }
         }
 
-        public Result<List<Despesa>> SelecionarTodos()
+        public Result<List<Despesa>> SelecionarTodos(Guid guid = new Guid())
         {
             Log.Logger.Debug("Tentando selecionar despesas...");
 
             try
             {
-                var despesas = repositorioDespesa.SelecionarTodos();
+                var despesas = repositorioDespesa.SelecionarTodos(guid);
 
                 Log.Logger.Information("Despesas selecionadas com sucesso");
 

@@ -167,7 +167,5 @@ namespace eAgenda.Aplicacao.ModuloContato
                 return Result.Fail(msgErro);
             }
         }
-
-
     }
 }

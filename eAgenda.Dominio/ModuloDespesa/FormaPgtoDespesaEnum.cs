@@ -4,5 +4,4 @@
     {
         PIX, Dinheiro, CartaoCredito
     }
-
 }

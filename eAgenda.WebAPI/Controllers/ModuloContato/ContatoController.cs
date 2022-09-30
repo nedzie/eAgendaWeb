@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using eAgenda.Aplicacao.ModuloContato;
 using eAgenda.Dominio.ModuloContato;
-using eAgenda.Dominio.ModuloTarefa;
 using eAgenda.WebAPI.ViewModels.ModuloContato;
 using eAgenda.WebAPI.ViewModels.ModuloTarefa;
 using Microsoft.AspNetCore.Authorization;
@@ -75,7 +74,7 @@ namespace eAgenda.WebAPI.Controllers.ModuloContato
                 return NotFound(contatoResult);
 
             if (contatoResult.IsFailed)
-                return InternalError<Tarefa>(contatoResult);
+                return InternalError<Contato>(contatoResult);
 
             return NoContent();
         }

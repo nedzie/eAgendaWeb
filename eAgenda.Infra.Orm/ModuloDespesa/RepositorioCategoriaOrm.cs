@@ -38,15 +38,16 @@ namespace eAgenda.Infra.Orm.ModuloDespesa
             return categorias.SingleOrDefault(x => x.Id == id);
         }
 
-        public List<Categoria> SelecionarTodos(bool incluirMateriasEhQuestoes)
+        public List<Categoria> SelecionarTodos(Guid usuarioId = new Guid())
         {
-            return categorias.ToList();
+            return categorias
+                .Where(x => x.UsuarioId.Equals(usuarioId))
+                .ToList();
         }
 
         public List<Categoria> SelecionarTodos()
         {
             return categorias.ToList();
         }
-
     }
 }

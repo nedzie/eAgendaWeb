@@ -2,9 +2,7 @@
 using eAgenda.Aplicacao.ModuloCompromisso;
 using eAgenda.Aplicacao.ModuloContato;
 using eAgenda.Dominio.ModuloCompromisso;
-using eAgenda.Dominio.ModuloTarefa;
 using eAgenda.WebAPI.ViewModels.ModuloCompromisso;
-using eAgenda.WebAPI.ViewModels.ModuloContato;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -77,7 +75,7 @@ namespace eAgenda.WebAPI.Controllers.ModuloCompromisso
                 return NotFound(compromissoResult);
 
             if (compromissoResult.IsFailed)
-                return InternalError<Tarefa>(compromissoResult);
+                return InternalError<Compromisso>(compromissoResult);
 
             return NoContent();
         }

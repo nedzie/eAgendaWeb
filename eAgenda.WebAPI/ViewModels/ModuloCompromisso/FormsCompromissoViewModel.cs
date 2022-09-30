@@ -1,4 +1,5 @@
-﻿using eAgenda.Dominio.ModuloContato;
+﻿using eAgenda.Dominio.ModuloCompromisso;
+using eAgenda.Dominio.ModuloContato;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -9,7 +10,7 @@ namespace eAgenda.WebAPI.ViewModels.ModuloCompromisso
         [Required(ErrorMessage = "O campo '{0}' é obrigatório")]
         public string Assunto { get; set; }
 
-        public string TipoLocalizacaoCompromisso { get; set; }
+        public TipoLocalizacaoCompromissoEnum TipoLocalizacaoCompromisso { get; set; }
         public string Local { get; set; }
         public string Link { get; set; }
 

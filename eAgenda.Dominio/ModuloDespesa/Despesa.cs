@@ -14,13 +14,9 @@ namespace eAgenda.Dominio.ModuloDespesa
         }
 
         public string Descricao { get; set; }
-
         public decimal Valor { get; set; }
-
         public DateTime Data { get; set; }
-
         public FormaPgtoDespesaEnum FormaPagamento { get; set; }
-
         public List<Categoria> Categorias { get; set; }
         public Guid UsuarioId { get; set; }
         public Usuario Usuario { get; set; }

@@ -49,7 +49,5 @@ namespace eAgenda.Infra.Orm.ModuloContato
         {
             return contatos.ToList();
         }
-
-
     }
 }
