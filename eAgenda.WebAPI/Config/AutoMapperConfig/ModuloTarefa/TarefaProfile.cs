@@ -3,9 +3,6 @@ using eAgenda.Dominio.Compartilhado;
 using eAgenda.Dominio.ModuloTarefa;
 using eAgenda.WebAPI.Config.AutoMapperConfig.ModuloAutenticacao;
 using eAgenda.WebAPI.ViewModels.ModuloTarefa;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Security.Claims;
 
 namespace eAgenda.WebAPI.Config.AutoMapperConfig.ModuloTarefa
 {
@@ -28,12 +25,17 @@ namespace eAgenda.WebAPI.Config.AutoMapperConfig.ModuloTarefa
             CreateMap<ItemTarefa, VisualizarItemTarefaViewModel>()
                 .ForMember(destino => destino.Situacao, opt => opt.MapFrom(origem => origem.Concluido ? "Concluído" : "Pendente"));
 
+            CreateMap<Tarefa, FormsTarefaViewModel>();
+
+            CreateMap<ItemTarefa, FormsItemTarefaViewModel>();
+
 
             // ViewModel => Classe
             CreateMap<InserirTarefaViewModel, Tarefa>()
                 .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>())
                 .ForMember(destino => destino.Itens, opt => opt.Ignore())
-                .AfterMap<AdicionarItensMappingAction>();
+                .AfterMap<AdicionarItensMappingAction>()
+                .AfterMap<AdicionarGuidMappingAction>();
 
             CreateMap<EditarTarefaViewModel, Tarefa>()
                 .ForMember(destino => destino.Itens, opt => opt.Ignore())

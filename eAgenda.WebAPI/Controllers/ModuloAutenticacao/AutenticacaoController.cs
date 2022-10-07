@@ -38,7 +38,7 @@ namespace eAgenda.WebAPI.Controllers.ModuloAutenticacao
             return Ok(new
             {
                 sucesso = true,
-                dados = usuarioResult.Value
+                dados = GerarJwt(usuarioResult.Value)
             });
         }
 
