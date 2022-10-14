@@ -5,6 +5,7 @@ namespace eAgenda.WebAPI.ViewModels.ModuloCompromisso
 {
     public class VisualizarCompromissoViewModel
     {
+        public Guid Id { get; set; }
         public string Assunto { get; set; }
         public string TipoLocalizacaoCompromisso { get; set; }
         public string Local { get; set; }

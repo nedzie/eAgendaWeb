@@ -10,12 +10,12 @@ namespace eAgenda.WebAPI.Controllers.ModuloCategoria
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriaController : eAgendaControllerBase
+    public class CategoriasController : eAgendaControllerBase
     {
         private readonly ServicoCategoria servicoCategoria;
         private readonly IMapper mapeadorCategoria;
 
-        public CategoriaController(ServicoCategoria servicoCategoria, IMapper mapeadorCategoria)
+        public CategoriasController(ServicoCategoria servicoCategoria, IMapper mapeadorCategoria)
         {
             this.servicoCategoria = servicoCategoria;
             this.mapeadorCategoria = mapeadorCategoria;

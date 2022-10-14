@@ -1,5 +1,4 @@
 ﻿using eAgenda.Dominio.Compartilhado;
-using eAgenda.Dominio.ModuloAutenticacao;
 using eAgenda.Dominio.ModuloContato;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ namespace eAgenda.Dominio.ModuloCompromisso
     public class Compromisso : EntidadeBase<Compromisso>
     {
         private DateTime _date;
-        private TipoLocalizacaoCompromissoEnum _compromissoEnum;
+        private TipoLocalizacaoCompromissoEnum tipoLocalizacaoCompromisso;
         public Compromisso()
         {
             Data = DateTime.Now;
@@ -32,14 +31,14 @@ namespace eAgenda.Dominio.ModuloCompromisso
         public string Assunto { get; set; }
         public string Local { get; set; }
 
-        public TipoLocalizacaoCompromissoEnum TipoLocal
+        public TipoLocalizacaoCompromissoEnum TipoLocalizacaoCompromisso
         {
-            get { return _compromissoEnum; }
+            get { return tipoLocalizacaoCompromisso; }
             set
             {
-                _compromissoEnum = value;
+                tipoLocalizacaoCompromisso = value;
 
-                switch (_compromissoEnum)
+                switch (tipoLocalizacaoCompromisso)
                 {
                     case TipoLocalizacaoCompromissoEnum.Presencial: Link = null; break;
                     case TipoLocalizacaoCompromissoEnum.Remoto: Local = null; break;
@@ -75,7 +74,7 @@ namespace eAgenda.Dominio.ModuloCompromisso
                    Id == compromisso.Id &&
                    Assunto == compromisso.Assunto &&
                    Local == compromisso.Local &&
-                   TipoLocal == compromisso.TipoLocal &&
+                   TipoLocalizacaoCompromisso == compromisso.TipoLocalizacaoCompromisso &&
                    Link == compromisso.Link &&
                    Data == compromisso.Data &&
                    HoraInicio.Equals(compromisso.HoraInicio) &&
@@ -94,7 +93,7 @@ namespace eAgenda.Dominio.ModuloCompromisso
             hash.Add(Id);
             hash.Add(Assunto);
             hash.Add(Local);
-            hash.Add(TipoLocal);
+            hash.Add(TipoLocalizacaoCompromisso);
             hash.Add(Link);
             hash.Add(Data);
             hash.Add(HoraInicio);

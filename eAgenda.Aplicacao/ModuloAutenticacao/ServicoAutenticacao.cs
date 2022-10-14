@@ -77,11 +77,11 @@ namespace eAgenda.Aplicacao.ModuloAutenticacao
             return Result.Ok(usuario);
         }
 
-        public async Task<Result<Usuario>> Sair(string email)
+        public async Task<Result<Usuario>> Sair()
         {
             await signInManager.SignOutAsync();
 
-            Log.Logger.Debug($"Sessão do usuário '{email}' removida.");
+            Log.Logger.Debug($"Sessão do usuário removida.");
 
             return Result.Ok();
         }

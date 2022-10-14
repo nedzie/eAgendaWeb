@@ -10,12 +10,16 @@ namespace eAgenda.WebAPI.Config.AutoMapperConfig.ModuloCategoria
         public CategoriaProfile()
         {
             CreateMap<InserirCategoriaViewModel, Categoria>()
-                .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>());
+                .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>())
+                .ForMember(destino => destino.Id, opt => opt.Ignore());
 
-            CreateMap<EditarCategoriaViewModel, Categoria>();
+            CreateMap<EditarCategoriaViewModel, Categoria>()
+                .ForMember(destino => destino.Id, opt => opt.Ignore());
 
             CreateMap<Categoria, ListarCategoriaViewModel>();
             CreateMap<Categoria, VisualizarCategoriaViewModel>();
+
+            CreateMap<Categoria, FormsCategoriaViewModel>();
         }
     }
 }

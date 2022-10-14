@@ -12,11 +12,11 @@ namespace eAgenda.WebAPI.Controllers.ModuloCompromisso
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CompromissoController : eAgendaControllerBase
+    public class CompromissosController : eAgendaControllerBase
     {
         private readonly ServicoCompromisso servicoCompromisso;
         private readonly IMapper mapeadorCompromisso;
-        public CompromissoController(ServicoCompromisso servicoCompromisso, IMapper mapeadorCompromisso)
+        public CompromissosController(ServicoCompromisso servicoCompromisso, IMapper mapeadorCompromisso)
         {
             this.servicoCompromisso = servicoCompromisso;
             this.mapeadorCompromisso = mapeadorCompromisso;

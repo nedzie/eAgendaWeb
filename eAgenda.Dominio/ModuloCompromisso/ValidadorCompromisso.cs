@@ -10,16 +10,16 @@ namespace eAgenda.Dominio.ModuloCompromisso
             RuleFor(x => x.Assunto)
                .NotNull().NotEmpty();
 
-            When(x => x.TipoLocal == TipoLocalizacaoCompromissoEnum.Remoto, () =>
+            When(x => x.TipoLocalizacaoCompromisso == TipoLocalizacaoCompromissoEnum.Remoto, () =>
             {
                 RuleFor(x => x.Link)
                    .Url()
                    .NotNull()
                    .NotEmpty();
 
-            }).Otherwise(() =>
+            });
+            When(x => x.TipoLocalizacaoCompromisso == TipoLocalizacaoCompromissoEnum.Presencial, () =>
             {
-
                 RuleFor(x => x.Local)
                     .NotNull()
                     .NotEmpty();

@@ -39,10 +39,16 @@ namespace eAgenda.WebAPI
 
             services.ConfigurarJWT();
 
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                    options.JsonSerializerOptions.Converters.Add(new TimeSpanJsonConverter()));
+
+            services.AddControllers().AddNewtonsoftJson();
+
             services.AddCors(options =>
             {
                 options
-                    .AddPolicy("Desenvolvimento", 
+                    .AddPolicy("Desenvolvimento",
                         services => services
                             .WithOrigins("http://localhost:4200")
                                 .AllowAnyMethod()

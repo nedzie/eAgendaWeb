@@ -13,12 +13,12 @@ namespace eAgenda.WebAPI.Controllers.ModuloContato
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class ContatoController : eAgendaControllerBase
+    public class ContatosController : eAgendaControllerBase
     {
         private readonly ServicoContato servicoContato;
         private readonly IMapper mapeadorContato;
 
-        public ContatoController(ServicoContato servicoContato, IMapper mapeadorContato)
+        public ContatosController(ServicoContato servicoContato, IMapper mapeadorContato)
         {
             this.servicoContato = servicoContato;
             this.mapeadorContato = mapeadorContato;

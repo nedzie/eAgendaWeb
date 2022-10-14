@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Text;
 using System;
 using System.Threading.Tasks;
+using FluentResults;
 
 namespace eAgenda.WebAPI.Controllers.ModuloAutenticacao
 {
@@ -55,6 +56,14 @@ namespace eAgenda.WebAPI.Controllers.ModuloAutenticacao
                 sucesso = true,
                 dados = GerarJwt(usuarioResult.Value)
             });
+        }
+
+        [HttpPost("sair")]
+        public async Task<ActionResult> Logout()
+        {
+            await servicoAutenticacao.Sair();
+
+            return Ok();
         }
 
         private TokenViewModel GerarJwt(Usuario usuario) // Json Web Token

@@ -35,11 +35,12 @@ namespace eAgenda.WebAPI.Config.AutoMapperConfig.ModuloTarefa
                 .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>())
                 .ForMember(destino => destino.Itens, opt => opt.Ignore())
                 .AfterMap<AdicionarItensMappingAction>()
-                .AfterMap<AdicionarGuidMappingAction>();
+                .ForMember(destino => destino.Id, opt => opt.Ignore());
 
             CreateMap<EditarTarefaViewModel, Tarefa>()
                 .ForMember(destino => destino.Itens, opt => opt.Ignore())
-                .AfterMap<EditarItensMappingAction>();
+                .AfterMap<EditarItensMappingAction>()
+                .ForMember(destino => destino.Id, opt => opt.Ignore());
         }
     }
 

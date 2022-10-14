@@ -10,13 +10,17 @@ namespace eAgenda.WebAPI.Config.AutoMapperConfig.ModuloContato
         public ContatoProfile()
         {
             CreateMap<InserirContatoViewModel, Contato>()
-                .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>());
+                .ForMember(destino => destino.UsuarioId, opt => opt.MapFrom<UsuarioResolver>())
+                .ForMember(destino => destino.Id, opt => opt.Ignore());
 
-            CreateMap<EditarContatoViewModel, Contato>();
+            CreateMap<EditarContatoViewModel, Contato>()
+                .ForMember(destino => destino.Id, opt => opt.Ignore());
 
             CreateMap<Contato, ListarContatoViewModel>();
 
             CreateMap<Contato, VisualizarContatoViewModel>();
+
+            CreateMap<Contato, FormsContatoViewModel>();
         }
     }
 }

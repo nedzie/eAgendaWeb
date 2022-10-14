@@ -17,15 +17,6 @@ namespace eAgenda.Dominio.ModuloContato
 
             RuleFor(x => x.Telefone)
                 .Telefone();
-
-            RuleFor(x => x.Empresa)
-                .MinimumLength(3)
-                .NotNull().NotEmpty();
-
-            RuleFor(x => x.Cargo)
-                .MinimumLength(3)
-                .NotNull().NotEmpty();
         }
-
     }
 }
